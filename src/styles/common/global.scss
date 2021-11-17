@@ -1,0 +1,57 @@
+.overflow-hidden {
+  overflow-y: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $black;
+  visibility: hidden;
+  opacity: 0;
+
+  &_active {
+    visibility: visible;
+    z-index: 2;
+    opacity: 0.6;
+  }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  max-width: 100vw;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+}
+
+.main {
+  grid-area: main;
+}
+
+.container {
+  @include container;
+}
+
+.text-center {
+  text-align: center;
+}

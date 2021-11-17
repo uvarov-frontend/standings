@@ -1,0 +1,12 @@
+extends ../layout
+
+block variables
+	- var title = 'Турнирная таблица Евро-2020';
+
+block content
+	section.section.main-component
+		h2.main-component__title Плей-офф
+		include ../includes/modules/standings
+
+block aside
+	.sidebar-component

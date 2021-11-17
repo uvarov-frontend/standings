@@ -1,0 +1,114 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: $black;
+  background: $light-border;
+  min-height: 100vh;
+  max-width: 100vw;
+  font-family: $font;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 18px 0;
+}
+h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 16px 0;
+}
+h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 12px 0;
+}
+h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+h5 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+}
+h6 {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+p {
+  display: block;
+  margin: 12px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  @include mq('phone_small') {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    text-decoration: none;
+  }
+}
+
+button,
+input,
+textarea {
+  border: 0;
+  outline: 0;
+  background: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0;
+}
+
+select {
+  display: none;
+}
+
+button,
+input[type='submit'] {
+  cursor: pointer;
+}
+
+address,
+i {
+  font-style: normal;
+}
+
+b,
+strong {
+  font-weight: 600;
+}

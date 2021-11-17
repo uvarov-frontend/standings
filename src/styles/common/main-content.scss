@@ -1,0 +1,139 @@
+.main-wrapper {
+  grid-area: main;
+  position: relative;
+  z-index: 1;
+  height: auto;
+  min-height: 100px;
+  width: 100%;
+  margin-top: 60px;
+  @include container;
+}
+
+.main-container {
+  background: $light-border;
+  display: grid;
+  grid-template-areas: 'main-content main-sidebar';
+  grid-template-columns: 855px 320px;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+  padding: 4px 0;
+  min-height: 250px;
+	height: 100%;
+
+  @include mq('desktop') {
+    overflow: hidden;
+    grid-template-areas: 'main-content' 'main-sidebar';
+    grid-template-columns: 100%;
+  }
+
+  &_nosidebar {
+    grid-template-areas: 'main-content';
+    grid-template-columns: 100%;
+  }
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  grid-area: main-content;
+
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+
+  @include mq('desktop') {
+    z-index: 2;
+  }
+}
+
+.main-section {
+  margin: 40px 0 80px;
+  @include container;
+}
+
+.main-sidebar {
+  position: relative;
+  z-index: 1;
+  grid-area: main-sidebar;
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+	height: 100%;
+	background-color: $white;
+	border-radius: 4px;
+}
+
+.main-component {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  background: $white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 4px;
+  scroll-margin-top: 140px;
+
+  &:last-child {
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+
+  @include mq('tablet_portrait') {
+    padding: 18px 14px 24px;
+    scroll-margin-top: 60px;
+  }
+
+  @include mq('phone_small') {
+    padding: 14px 12px 22px;
+  }
+
+  &_enlarge {
+    padding: 0;
+  }
+
+  &__title {
+    position: relative;
+    display: block;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    color: $black;
+    margin: 0;
+    margin-bottom: 20px;
+
+    @include mq('tablet_portrait') {
+      margin-bottom: 18px;
+    }
+
+    @include mq('phone_small') {
+      margin-bottom: 12px;
+    }
+
+    &_big {
+      font-size: 26px;
+      line-height: 32px;
+
+      @include mq('phone') {
+        font-size: 24px;
+        line-height: 26px;
+      }
+    }
+
+    &_small {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      margin: 0;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__header {
+    @include mq('desktop') {
+      margin-bottom: 5px;
+      margin-top: 30px;
+    }
+  }
+}

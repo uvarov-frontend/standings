@@ -1,0 +1,59 @@
+//Основновные цвета
+$green-primary: #61ae1d;
+$green-hover: #6fc423;
+
+$blue-primary: #0f56b3;
+$blue-hover: #1365d0;
+$blue-link: #007df1;
+
+$white: #ffffff;
+$black: #000000;
+
+$grey-one: #333333;
+$grey-two: #666666;
+
+$grey-light: #d8d8d8;
+$grey-light-two: #f4f4f4;
+$grey-light-extralarge: #f9f9f9;
+
+//Вспомогательные цвета
+$light-two: #fbfbfb;
+$light-border: #f3f3f3;
+$light-background: #e8e8e8;
+
+$yellow: #feca2e;
+
+$red: #d61a20;
+$red-light: #df3a4d;
+
+//Градиент
+$white-gradient: linear-gradient(270deg, #f0f0f0 3.51%, #ffffff 98.24%);
+$white-gradient-two: linear-gradient(80.64deg, #f5f5f5 0.21%, #fafafa 99.22%);
+$white-gradient-three: linear-gradient(270deg, #ffffff -0.87%, #f2f2f2 50.52%, #ffffff 103.28%);
+$white-gradient-four: linear-gradient(270deg, #ffffff 0%, #f5f5f5 50.38%, #ffffff 100%), #ebebeb;
+$white-gradient-five: linear-gradient(88.36deg, rgba(226, 226, 226, 0.53) 1.06%, rgba(244, 244, 244, 0.53) 99.23%);
+$black-gradient: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.45) 25%, rgba(0, 0, 0, 0.85) 100%);
+
+$green-gradient: linear-gradient(315.28deg, #77d425 25.12%, #61ae1d 74.88%);
+$green-lite-gradient: linear-gradient(20.56deg, rgba(184, 239, 92, 0.56) 8.01%, rgba(218, 247, 169, 0.56) 51.58%, rgba(255, 255, 255, 0.56) 102.35%);
+$blue-gradient: linear-gradient(270deg, #0d6be5 3.51%, #0f56b3 98.24%);
+$red-gradient: linear-gradient(90deg, #c1021d 0%, #e0053c 100%);
+
+//Тень
+$shadow-grey: 0px 4px 20px rgba(0, 0, 0, 0.07);
+$shadow-grey-two: 0px -4px 20px rgba(0, 0, 0, 0.07);
+$shadow-grey-medium: 0px 9px 20px rgba(0, 0, 0, 0.1);
+$shadow-table: 7px 0px 25px rgba(0, 0, 0, 0.09);
+
+//Шрифты
+$font: 'ProximaNova', sans-serif;
+
+//Брейкпоинты
+$mq_phone_small: 375;
+$mq_phone: 544; //0-575px
+$mq_tablet_portrait: 768; //576-767px
+$mq_tablet_landscape: 992; //768-991px
+$mq_desktop: 1180; //992-1200px
+
+//Ширина контейнера за счет динамических отступов
+$pd_desktop: 590; //1180px

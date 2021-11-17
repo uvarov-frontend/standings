@@ -1,0 +1,171 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 10px 25px;
+  color: $black;
+  white-space: nowrap;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    color: $green-primary;
+    text-decoration: none !important;
+  }
+
+  &:active {
+    color: $green-primary;
+  }
+
+  @include mq('tablet_portrait') {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  @include mq('phone_small') {
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &_uppercase {
+    text-transform: uppercase;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  &_medium {
+    font-size: 16px;
+    line-height: 19px;
+    padding: 12px 25px;
+
+    @include mq('tablet_portrait') {
+      font-size: 16px;
+      line-height: 19px;
+      padding: 12px 25px;
+    }
+    @include mq('phone_small') {
+      padding: 10px 26px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  &_link {
+    color: $blue-link;
+    font-weight: 400;
+		font-size: 16px;
+
+		@include mq('tablet_portrait') {
+      font-size: 14px;
+    }
+
+    &:hover {
+      text-decoration: underline !important;
+      color: $blue-link;
+    }
+
+    &:active {
+      text-decoration: underline !important;
+      color: $blue-link;
+    }
+  }
+
+  &_trn {
+    background: transparent;
+    color: $black !important;
+
+    &:hover {
+      background: transparent;
+      color: $green-hover !important;
+    }
+
+    &:active {
+      background: transparent;
+      color: $green-hover !important;
+    }
+  }
+
+  &_green {
+    background: $green-primary;
+    color: $white !important;
+
+    &:hover {
+      background: $green-hover;
+      color: $white;
+    }
+
+    &:active {
+      background: $green-hover;
+      color: $white;
+    }
+  }
+
+  &_white {
+    background: $white;
+    color: $black !important;
+
+    &:hover {
+      background: $white;
+      color: $green-primary;
+    }
+
+    &:active {
+      background: $white;
+      color: $green-primary;
+    }
+  }
+
+  &_ligth-grey {
+    background: $grey-light-two;
+    color: $black !important;
+
+    &:hover {
+      background: $grey-light-extralarge;
+      color: $black;
+    }
+
+    &:active {
+      background: $grey-light-extralarge;
+      color: $black;
+    }
+  }
+
+  &_green-gradient {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: transparent;
+    color: $white !important;
+
+    &::after {
+      content: '';
+      width: calc(100% + 50%);
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      background: $green-gradient;
+      transform: translateX(-15%);
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      background: transparent;
+      color: $white;
+
+      &::after {
+        transform: translateX(-30%);
+      }
+    }
+
+    &:active {
+      background: transparent;
+      color: $white;
+    }
+  }
+}
