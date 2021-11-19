@@ -31,10 +31,15 @@
 	&__arrows {
 		display: block;
 		position: absolute;
+		z-index: 1;
 		left: 0;
 		top: -15px;
 		width: 100%;
 		pointer-events: none;
+
+		@include mq('phone') {
+			display: none;
+		}
 	}
 
 	&__arrow {
@@ -99,27 +104,74 @@
 	}
 
 	&__content {
+		overflow: hidden;
+		width: calc(100% + 20px);
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+	}
+
+	&__scroll {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 12px;
-		width: calc(100% + 20px);
-		overflow: hidden;
+		width: max-content;
+		transition: transform 0.2s;
 
 		@include mq('phone') {
 			background-color: $grey-light-two;
-			border-top-left-radius: 8px;
-			border-bottom-left-radius: 8px;
-			padding: 20px;
 		}
 	}
 
 	&__column {
+		position: relative;
 		width: 255px;
 		border-radius: 8px;
 		background-color: $grey-light-two;
+		display: flex;
+    flex-direction: column;
 
-		// temp
-		height: 700px;
+		&:first-child {
+			& .standings-match {
+				&::before {
+					content: none;
+				}
+
+				&::after {
+					content: none;
+				}
+			}
+
+			& .standings-match__btn {
+				display: none;
+			}
+		}
+
+		&:nth-child(2) {
+			& .standings-match {
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+		}
+
+		&:nth-child(3) {
+			& .standings-match {
+				padding-top: 46px;
+				padding-bottom: 46px;
+			}
+		}
+
+		&:last-child {
+			& .standings-match {
+				padding-top: 128px;
+				padding-bottom: 128px;
+
+				& .standings-match__team {
+					&::after {
+						width: 100%;
+					}
+				}
+			}
+		}
 
 		&-header {
 			display: flex;
@@ -138,6 +190,16 @@
 			@include mq('phone') {
 				display: none;
 			}
+		}
+
+		&-content {
+			padding: 14px;
+			font-size: 0;
+			height: 100%;
+			display: grid;
+			grid-auto-flow: row;
+			gap: 10px;
+			align-content: space-around;
 		}
 	}
 }

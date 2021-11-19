@@ -1,0 +1,154 @@
+.standings-match {
+	position: relative;
+
+	&::before {
+		content: '';
+		height: 100%;
+		width: 1px;
+		background-color: $light-background;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: -20px;
+	}
+
+	&::after {
+		content: '';
+		height: 1px;
+		width: 20px;
+		background-color: $light-background;
+		display: block;
+		position: absolute;
+		top: 50%;
+		margin-top: -1px;
+		left: -20px;
+	}
+
+	&__btn {
+		display: none;
+		position: absolute;
+		z-index: 1;
+		left: -28px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 17px;
+		height: 17px;
+		background-color: $black;
+		border-radius: 5px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateY(-50%) translateX(-50%);
+			width: 9px;
+			height: 10px;
+			background-color: $white;
+			mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
+		}
+
+		@include mq('phone') {
+			display: block;
+		}
+	}
+
+	&__content {
+		background-color: $white;
+		border-radius: 6px;
+	}
+
+	&__team {
+		position: relative;
+		padding: 8px;
+		padding-left: 35px;
+		display: flex;
+		justify-content: space-between;
+		font-weight: 400;
+
+		&_win {
+			font-weight: 600;
+
+			&::before {
+				content: '';
+				width: 4px;
+				height: 100%;
+				background-color: $green-primary;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		}
+
+		&:first-child {
+			&::after {
+				content: '';
+				height: 1px;
+				width: calc(100% + 20px);
+				background-color: $light-background;
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+
+			&.standings-match__team_win {
+				&::before {
+					border-top-left-radius: 6px;
+				}
+			}
+		}
+
+		&:last-child {
+			&::after {
+				width: 1px;
+				height: calc(100% + 20px);
+				background-color: $light-background;
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+
+			&.standings-match__team_win {
+				&::before {
+					border-bottom-left-radius: 6px;
+				}
+			}
+		}
+
+		&-logo {
+			display: block;
+			width: 18px;
+			height: 15px;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-color: $grey-light-two;
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&-name {
+			display: block;
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: inherit;
+			color: $black;
+			max-width: 155px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		&-count {
+			width: 20px;
+			text-align: center;
+			display: block;
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: inherit;
+			color: $black;
+		}
+	}
+}

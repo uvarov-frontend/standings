@@ -1,3 +1,4 @@
+include ../../mixin/standings-match
 .b-standings
 	.__btns
 		button(type="button").__btn._active 1/8
@@ -6,13 +7,33 @@
 		button(type="button").__btn Финал
 	.__arrows
 		button(type="button").__arrow._prev Назад
-		button(type="button").__arrow._next Вперед
+		button(type="button").__arrow._next._active Вперед
 	.__content
-		.__column
-			span.__column-header 1/8
-		.__column
-			span.__column-header 1/4
-		.__column
-			span.__column-header 1/2
-		.__column
-			span.__column-header Финал
+		.__scroll
+			.__column
+				b.__column-header 1/8
+				.__column-content
+					+standings-match('Бельгия', 'be.svg', '1', 'Португалия', 'pt.svg', '0', 1)
+					+standings-match('Италия', 'it.svg', '2', 'Австралия', 'at.svg', '1', 1)
+					+standings-match('Франция', 'fr.svg', '7', 'Швейцария', 'ch.svg', '8', 2)
+					+standings-match('Хорватия', 'hr.svg', '3', 'Испания', 'es.svg', '5', 2)
+					+standings-match('Швеция', 'se.svg', '1', 'Украина', 'ua.svg', '2', 2)
+					+standings-match('Англия', 'eng.svg', '2', 'Германия', 'de.svg', '0', 1)
+					+standings-match('Голандия', 'gl.svg', '0', 'Чехия', 'cz.svg', '2', 2)
+					+standings-match('Уэльс', 'wls.svg', '0', 'Дания', 'dk.svg', '4', 2)
+			.__column
+				b.__column-header 1/4
+				.__column-content
+					+standings-match('Бельгия', 'be.svg', '1', 'Италия', 'it.svg', '2', 2)
+					+standings-match('Швейцария', 'ch.svg', '2', 'Испания', 'es.svg', '4', 2)
+					+standings-match('Украина', 'ua.svg', '0', 'Англия', 'eng.svg', '4', 2)
+					+standings-match('Чехия', 'cz.svg', '1', 'Дания', 'dk.svg', '2', 2)
+			.__column
+				b.__column-header 1/2
+				.__column-content
+					+standings-match('Италия', 'it.svg', '5', 'Испания', 'es.svg', '3', 1)
+					+standings-match('Англия', 'eng.svg', '2', 'Дания', 'dk.svg', '1', 1)
+			.__column
+				b.__column-header Финал
+				.__column-content
+					+standings-match('Италия', 'it.svg', '4', 'Англия', 'eng.svg', '3', 1)

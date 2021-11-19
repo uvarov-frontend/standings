@@ -1,0 +1,24 @@
+mixin standings-match(teamOne, logoOne, countOne, teamTwo, logoTwo, countTwo, winner)
+	.b-standings-match
+		button(type="button").__btn
+		.__content
+			if winner == 1
+				-var winOne = 'standings-match__team_win';
+				-var winTwo = '';
+			else if winner == 2
+				-var winOne = '';
+				-var winTwo = 'standings-match__team_win';
+			else
+				-var winOne = '';
+				-var winTwo = '';
+
+			.__team(class=winOne)
+				span(style=`background-image:  url('~@/img/flag/${logoOne}')`).__team-logo
+				span(title=teamOne).__team-name= teamOne
+				.__team-count= countOne
+
+
+			.__team(class=winTwo)
+				span(style=`background-image: url('~@/img/flag/${logoTwo}')`).__team-logo
+				span(title=teamTwo).__team-name= teamTwo
+				.__team-count= countTwo
