@@ -1,5 +1,6 @@
 .standings {
 	position: relative;
+	z-index: 1;
 
 	&__btns {
 		display: none;
@@ -31,7 +32,7 @@
 	&__arrows {
 		display: block;
 		position: absolute;
-		z-index: 1;
+		z-index: 2;
 		left: 0;
 		top: -15px;
 		width: 100%;
@@ -120,6 +121,72 @@
 		@include mq('phone') {
 			background-color: $grey-light-two;
 		}
+
+		&_step-1 {
+			& .standings__column {
+				&:nth-child(2) {
+					& .standings-match {
+						padding-top: 0;
+						padding-bottom: 0;
+					}
+				}
+
+				&:nth-child(3) {
+					& .standings-match {
+						padding-top: 5px;
+						padding-bottom: 5px;
+					}
+				}
+
+				&:last-child {
+					& .standings-match {
+						padding-top: 46px;
+						padding-bottom: 46px;
+					}
+				}
+
+				& .standings__column-content {
+					height: 350px;
+				}
+			}
+		}
+
+		&_step-2 {
+			& .standings__column {
+				&:nth-child(3) {
+					& .standings-match {
+						padding-top: 0;
+						padding-bottom: 0;
+					}
+				}
+
+				&:last-child {
+					& .standings-match {
+						padding-top: 5px;
+						padding-bottom: 5px;
+					}
+				}
+
+				& .standings__column-content {
+					height: 185px;
+				}
+			}
+		}
+
+		&_step-3 {
+			& .standings__column {
+				&:last-child {
+					& .standings-match {
+						padding-top: 0;
+						padding-bottom: 0;
+					}
+				}
+
+				& .standings__column-content {
+					height: 102px;
+				}
+			}
+		}
 	}
 
 	&__column {
@@ -174,6 +241,8 @@
 		}
 
 		&-header {
+			position: relative;
+			z-index: 1;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -195,11 +264,12 @@
 		&-content {
 			padding: 14px;
 			font-size: 0;
-			height: 100%;
+			height: 675px;
 			display: grid;
 			grid-auto-flow: row;
 			gap: 10px;
 			align-content: space-around;
+			transition: height 0.2s ease 0.1s;
 		}
 	}
 }

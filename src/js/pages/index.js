@@ -1,1 +1,3 @@
-import '../modules/standings';
+import standings from '../modules/standings';
+
+standings.init();
