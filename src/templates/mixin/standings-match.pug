@@ -1,6 +1,7 @@
 mixin standings-match(teamOne, logoOne, countOne, IDOne, teamTwo, logoTwo, countTwo, IDTwo, winner)
 	.b-standings-match
-		button(type="button" data-standings-arrow="next").__btn
+		button(type="button" data-standings-arrow="prev").__btn._prev
+		button(type="button" data-standings-arrow="next").__btn._next
 		.__content
 			if winner == 1
 				-var winOne = 'standings-match__team_win';

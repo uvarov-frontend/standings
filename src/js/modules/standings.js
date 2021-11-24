@@ -16,12 +16,25 @@ const standings = {
 	},
 
 	scrollContent(type, step) {
-		if (type === 'next') {
-			this.currentScroll = step !== undefined ? this.columnWidth * step : this.currentScroll + this.columnWidth;
-			this.currentStep = step !== undefined ? step : this.currentStep + 1;
-		} else if (type === 'prev') {
-			this.currentScroll = step !== undefined ? this.columnWidth * step : this.currentScroll - this.columnWidth;
-			this.currentStep = step !== undefined ? step : this.currentStep - 1;
+		if (step !== undefined) {
+			this.currentScroll = step ? this.minWidthColumn + this.maxWidthColumn * (step - 1)
+				: 0;
+			this.currentStep = step;
+		} else {
+			if (type === 'next') {
+				const widthStep = this.currentStep ? this.maxWidthColumn
+					: this.minWidthColumn;
+
+				this.currentScroll += widthStep;
+				this.currentStep += 1;
+			}
+			if (type === 'prev') {
+				const widthStep = this.currentStep === 1 ? this.minWidthColumn
+					: this.maxWidthColumn;
+
+				this.currentScroll -= widthStep;
+				this.currentStep -= 1;
+			}
 		}
 
 		this.setActiveBtn();
@@ -40,17 +53,7 @@ const standings = {
 	},
 
 	clickArrow(arrow) {
-		const direction = arrow.dataset.standingsArrow;
-
-		switch (direction) {
-			case 'next':
-				this.scrollContent('next');
-				break;
-			case 'prev':
-				this.scrollContent('prev');
-				break;
-			// no default
-		}
+		this.scrollContent(arrow.dataset.standingsArrow);
 	},
 
 	removeActiveClassTeam(teams) {
@@ -105,9 +108,9 @@ const standings = {
 		};
 
 		const action = () => {
-			if (shift > 40 && (this.currentScroll + this.columnWidth) < this.scroll.offsetWidth) {
+			if (shift > 40 && (this.currentScroll + this.maxWidthColumn) < this.scroll.offsetWidth) {
 				this.scrollContent('next');
-			} else if (shift < ((40) * (-1)) && (this.currentScroll - this.columnWidth) >= 0) {
+			} else if (shift < ((40) * (-1)) && (this.currentScroll - this.minWidthColumn) >= 0) {
 				this.scrollContent('prev');
 			} else {
 				this.scroll.style.transform = `translateX(-${this.currentScroll}px)`;
@@ -143,14 +146,25 @@ const standings = {
 		}
 	},
 
+	getWidthColumn() {
+		this.minWidthColumn = this.columns[1].offsetLeft;
+		this.maxWidthColumn = this.columns[2].offsetLeft - this.minWidthColumn;
+	},
+
 	variables() {
 		this.scroll = this.selector.querySelector('.standings__scroll');
 		this.columns = this.selector.querySelectorAll('.standings__column');
 
 		this.prev = this.selector.querySelector('[data-standings-arrow="prev"]');
 		this.next = this.selector.querySelector('[data-standings-arrow="next"]');
+	},
 
-		this.columnWidth = this.columns[1].offsetLeft;
+	testResizeWidth() {
+		window.addEventListener('resize', () => {
+			this.scrollContent('prev', 0);
+			this.testWidthScroll();
+			this.getWidthColumn();
+		});
 	},
 
 	init() {
@@ -158,10 +172,12 @@ const standings = {
 		if (!this.selector) return;
 
 		this.variables();
+		this.getWidthColumn();
 		this.testWidthScroll();
 		this.touchScroll();
 		this.clickStandings();
 		this.hoverTeam();
+		this.testResizeWidth();
 	},
 };
 

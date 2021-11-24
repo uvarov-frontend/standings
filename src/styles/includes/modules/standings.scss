@@ -4,7 +4,17 @@
 
 	&__btns {
 		display: none;
-		margin-bottom: 14px;
+		position: sticky;
+		z-index: 2;
+		top: 59px;
+		background-color: $white;
+		width: calc(100% + 28px);
+		max-width: 100vw;
+		overflow: hidden;
+		margin-left: -14px;
+		margin-top: -14px;
+		padding: 14px;
+		box-shadow: $shadow-gray-three;
 
 		@include mq('phone') {
 			display: flex;
@@ -107,19 +117,37 @@
 	&__content {
 		overflow: hidden;
 		width: calc(100% + 20px);
+		max-width: 100vw;
 		border-top-left-radius: 8px;
 		border-bottom-left-radius: 8px;
+
+		@include mq('phone') {
+			background-color: $grey-light-two;
+			margin-top: -10px;
+			padding-top: 10px;
+			width: calc(100% + 14px);
+		}
 	}
 
 	&__scroll {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(4, auto);
 		gap: 12px;
 		width: max-content;
 		transition: transform 0.2s;
 
 		@include mq('phone') {
-			background-color: $grey-light-two;
+			gap: 0;
+		}
+
+		&_step-0 {
+			& .standings__column {
+				@include mq('phone') {
+					& .standings-match__btn_next {
+						display: block;
+					}
+				}
+			}
 		}
 
 		&_step-1 {
@@ -128,6 +156,16 @@
 					& .standings-match {
 						padding-top: 0;
 						padding-bottom: 0;
+
+						@include mq('phone') {
+							& .standings-match__btn_next {
+								display: none;
+							}
+
+							& .standings-match__btn_prev {
+								display: block;
+							}
+						}
 					}
 				}
 
@@ -135,6 +173,12 @@
 					& .standings-match {
 						padding-top: 5px;
 						padding-bottom: 5px;
+
+						@include mq('phone') {
+							& .standings-match__btn_next {
+								display: block;
+							}
+						}
 					}
 				}
 
@@ -142,6 +186,12 @@
 					& .standings-match {
 						padding-top: 46px;
 						padding-bottom: 46px;
+
+						@include mq('phone') {
+							& .standings-match__btn_next {
+								display: block;
+							}
+						}
 					}
 				}
 
@@ -157,6 +207,16 @@
 					& .standings-match {
 						padding-top: 0;
 						padding-bottom: 0;
+
+						@include mq('phone') {
+							& .standings-match__btn_next {
+								display: none;
+							}
+
+							& .standings-match__btn_prev {
+								display: block;
+							}
+						}
 					}
 				}
 
@@ -164,6 +224,12 @@
 					& .standings-match {
 						padding-top: 5px;
 						padding-bottom: 5px;
+
+						@include mq('phone') {
+							& .standings-match__btn_next {
+								display: block;
+							}
+						}
 					}
 				}
 
@@ -179,6 +245,16 @@
 					& .standings-match {
 						padding-top: 0;
 						padding-bottom: 0;
+
+						@include mq('phone') {
+							& .standings-match__btn_next {
+								display: none;
+							}
+
+							& .standings-match__btn_prev {
+								display: block;
+							}
+						}
 					}
 				}
 
@@ -191,14 +267,22 @@
 
 	&__column {
 		position: relative;
-		width: 255px;
+		width: 260px;
 		border-radius: 8px;
 		background-color: $grey-light-two;
 		display: flex;
     flex-direction: column;
 
+		@include mq('phone') {
+			width: 280px;
+		}
+
 		&:first-child {
+			width: 260px;
+
 			& .standings-match {
+				padding-left: 0;
+
 				&::before {
 					content: none;
 				}
@@ -262,7 +346,7 @@
 		}
 
 		&-content {
-			padding: 14px;
+			padding: 15px;
 			font-size: 0;
 			height: 675px;
 			display: grid;
