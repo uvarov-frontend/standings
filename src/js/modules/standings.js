@@ -146,9 +146,10 @@ const standings = {
 		}
 	},
 
-	getWidthColumn() {
+	getWidth() {
 		this.minWidthColumn = this.columns[1].offsetLeft;
 		this.maxWidthColumn = this.columns[2].offsetLeft - this.minWidthColumn;
+		this.currentWidth = document.body.clientWidth;
 	},
 
 	variables() {
@@ -160,11 +161,15 @@ const standings = {
 	},
 
 	testResizeWidth() {
-		window.addEventListener('resize', () => {
+		const resize = () => {
+			if (this.currentWidth === document.body.clientWidth) return;
+
 			this.scrollContent('prev', 0);
 			this.testWidthScroll();
-			this.getWidthColumn();
-		});
+			this.getWidth();
+		};
+
+		window.addEventListener('resize', resize);
 	},
 
 	init() {
@@ -172,7 +177,7 @@ const standings = {
 		if (!this.selector) return;
 
 		this.variables();
-		this.getWidthColumn();
+		this.getWidth();
 		this.testWidthScroll();
 		this.touchScroll();
 		this.clickStandings();
