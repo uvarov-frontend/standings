@@ -131,137 +131,13 @@
 
 	&__scroll {
 		display: grid;
-		grid-template-columns: repeat(4, auto);
+		grid-auto-flow: column;
 		gap: 12px;
 		width: max-content;
 		transition: transform 0.2s;
 
 		@include mq('phone') {
 			gap: 0;
-		}
-
-		&_step-0 {
-			& .standings__column {
-				@include mq('phone') {
-					& .standings-match__btn_next {
-						display: block;
-					}
-				}
-			}
-		}
-
-		&_step-1 {
-			& .standings__column {
-				&:nth-child(2) {
-					& .standings-match {
-						padding-top: 0;
-						padding-bottom: 0;
-
-						@include mq('phone') {
-							& .standings-match__btn_next {
-								display: none;
-							}
-
-							& .standings-match__btn_prev {
-								display: block;
-							}
-						}
-					}
-				}
-
-				&:nth-child(3) {
-					& .standings-match {
-						padding-top: 5px;
-						padding-bottom: 5px;
-
-						@include mq('phone') {
-							& .standings-match__btn_next {
-								display: block;
-							}
-						}
-					}
-				}
-
-				&:last-child {
-					& .standings-match {
-						padding-top: 46px;
-						padding-bottom: 46px;
-
-						@include mq('phone') {
-							& .standings-match__btn_next {
-								display: block;
-							}
-						}
-					}
-				}
-
-				& .standings__column-content {
-					height: 350px;
-				}
-			}
-		}
-
-		&_step-2 {
-			& .standings__column {
-				&:nth-child(3) {
-					& .standings-match {
-						padding-top: 0;
-						padding-bottom: 0;
-
-						@include mq('phone') {
-							& .standings-match__btn_next {
-								display: none;
-							}
-
-							& .standings-match__btn_prev {
-								display: block;
-							}
-						}
-					}
-				}
-
-				&:last-child {
-					& .standings-match {
-						padding-top: 5px;
-						padding-bottom: 5px;
-
-						@include mq('phone') {
-							& .standings-match__btn_next {
-								display: block;
-							}
-						}
-					}
-				}
-
-				& .standings__column-content {
-					height: 185px;
-				}
-			}
-		}
-
-		&_step-3 {
-			& .standings__column {
-				&:last-child {
-					& .standings-match {
-						padding-top: 0;
-						padding-bottom: 0;
-
-						@include mq('phone') {
-							& .standings-match__btn_next {
-								display: none;
-							}
-
-							& .standings-match__btn_prev {
-								display: block;
-							}
-						}
-					}
-				}
-
-				& .standings__column-content {
-					height: 102px;
-				}
-			}
 		}
 	}
 
@@ -283,42 +159,49 @@
 			& .standings-match {
 				padding-left: 0;
 
-				&::before {
-					content: none;
+				&__btn {
+					display: none;
 				}
-
-				&::after {
-					content: none;
-				}
-			}
-
-			& .standings-match__btn {
-				display: none;
-			}
-		}
-
-		&:nth-child(2) {
-			& .standings-match {
-				padding-top: 5px;
-				padding-bottom: 5px;
-			}
-		}
-
-		&:nth-child(3) {
-			& .standings-match {
-				padding-top: 46px;
-				padding-bottom: 46px;
 			}
 		}
 
 		&:last-child {
-			& .standings-match {
-				padding-top: 128px;
-				padding-bottom: 128px;
+			& .standings-matchs{
+				&__section {
+					&::before {
+						content: none;
+					}
+				}
+			}
 
-				& .standings-match__team {
+			& .standings-match {
+				&__team {
 					&::after {
 						width: 100%;
+					}
+				}
+			}
+		}
+
+		&_before {
+			& .standings-match {
+				@include mq('phone') {
+					& .standings-match__btn_next {
+						display: none;
+					}
+
+					& .standings-match__btn_prev {
+						display: block;
+					}
+				}
+			}
+
+			&:first-child {
+				& .standings-match {
+					@include mq('phone') {
+						& .standings-match__btn_prev {
+							display: none;
+						}
 					}
 				}
 			}
@@ -348,12 +231,7 @@
 		&-content {
 			padding: 15px;
 			font-size: 0;
-			height: 675px;
-			display: grid;
-			grid-auto-flow: row;
-			gap: 10px;
-			align-content: space-around;
-			transition: height 0.2s ease 0.1s;
+			height: 100%;
 		}
 	}
 }

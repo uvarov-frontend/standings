@@ -2,9 +2,17 @@ const standings = {
 	currentScroll: 0,
 	currentStep: 0,
 
+	setCurrentColumn(step) {
+		this.columns.forEach((column) => column.classList.remove('standings__column_before'));
+		if (step === 0) return;
+
+		for (let i = 0; i <= step; i++) {
+			this.columns[i].classList.add('standings__column_before');
+		}
+	},
+
 	setScroll() {
 		this.scroll.style.transform = `translateX(-${this.currentScroll}px)`;
-		this.scroll.className = `standings__scroll standings__scroll_step-${this.currentStep}`;
 	},
 
 	setActiveBtn() {
@@ -37,6 +45,8 @@ const standings = {
 			}
 		}
 
+		this.setCurrentColumn(this.currentStep);
+		this.setHeight();
 		this.setActiveBtn();
 		this.setScroll();
 		this.testWidthScroll();
@@ -146,15 +156,27 @@ const standings = {
 		}
 	},
 
+	setHeight() {
+		const matchs = this.content[this.currentStep].querySelectorAll('.standings-match');
+		const section = this.content[0].querySelectorAll('.standings-matchs__section');
+
+		const indent = (section[0].offsetHeight - (matchs[0].offsetHeight * 2)) * (matchs.length - 1);
+		const height = matchs[0].offsetHeight * matchs.length + indent;
+
+		this.content.forEach((content) => { content.style.height = `${height}px`; });
+	},
+
 	getWidth() {
-		this.minWidthColumn = this.columns[1].offsetLeft;
-		this.maxWidthColumn = this.columns[2].offsetLeft - this.minWidthColumn;
+		this.minWidthColumn = this.columns[1]?.offsetLeft;
+		this.maxWidthColumn = this.columns[2]?.offsetLeft - this.columns[1]?.offsetLeft || this.columns[1]?.offsetWidth;
+
 		this.currentWidth = document.body.clientWidth;
 	},
 
 	variables() {
 		this.scroll = this.selector.querySelector('.standings__scroll');
 		this.columns = this.selector.querySelectorAll('.standings__column');
+		this.content = this.selector.querySelectorAll('.standings-matchs');
 
 		this.prev = this.selector.querySelector('[data-standings-arrow="prev"]');
 		this.next = this.selector.querySelector('[data-standings-arrow="next"]');
@@ -165,7 +187,6 @@ const standings = {
 			if (this.currentWidth === document.body.clientWidth) return;
 
 			this.scrollContent('prev', 0);
-			this.testWidthScroll();
 			this.getWidth();
 		};
 
@@ -183,6 +204,10 @@ const standings = {
 		this.clickStandings();
 		this.hoverTeam();
 		this.testResizeWidth();
+
+		window.addEventListener('load', () => {
+			this.setHeight();
+		});
 	},
 };
 

@@ -13,27 +13,39 @@ include ../../mixin/standings-match
 			.__column
 				b.__column-header 1/8
 				.__column-content
-					+standings-match('Бельгия', 'be.svg', '1', 1, 'Португалия', 'pt.svg', '0', 2, 1)
-					+standings-match('Италия', 'it.svg', '2', 3, 'Австралия', 'at.svg', '1', 4, 1)
-					+standings-match('Франция', 'fr.svg', '7', 5, 'Швейцария', 'ch.svg', '8', 6, 2)
-					+standings-match('Хорватия', 'hr.svg', '3', 7, 'Испания', 'es.svg', '5', 8, 2)
-					+standings-match('Швеция', 'se.svg', '1', 9, 'Украина', 'ua.svg', '2', 10, 2)
-					+standings-match('Англия', 'eng.svg', '2', 11, 'Германия', 'de.svg', '0', 12, 1)
-					+standings-match('Голандия', 'gl.svg', '0', 13, 'Чехия', 'cz.svg', '2', 14, 2)
-					+standings-match('Уэльс', 'wls.svg', '0', 15, 'Дания', 'dk.svg', '4', 16, 2)
+					.standings-matchs
+						.standings-matchs__section
+							+standings-match('Бельгия', 'be.svg', '1', 1, 'Португалия', 'pt.svg', '0', 2, 1)
+							+standings-match('Италия', 'it.svg', '2', 3, 'Австралия', 'at.svg', '1', 4, 1)
+						.standings-matchs__section
+							+standings-match('Франция', 'fr.svg', '7', 5, 'Швейцария', 'ch.svg', '8', 6, 2)
+							+standings-match('Хорватия', 'hr.svg', '3', 7, 'Испания', 'es.svg', '5', 8, 2)
+						.standings-matchs__section
+							+standings-match('Швеция', 'se.svg', '1', 9, 'Украина', 'ua.svg', '2', 10, 2)
+							+standings-match('Англия', 'eng.svg', '2', 11, 'Германия', 'de.svg', '0', 12, 1)
+						.standings-matchs__section
+							+standings-match('Голандия', 'gl.svg', '0', 13, 'Чехия', 'cz.svg', '2', 14, 2)
+							+standings-match('Уэльс', 'wls.svg', '0', 15, 'Дания', 'dk.svg', '4', 16, 2)
 			.__column
 				b.__column-header 1/4
 				.__column-content
-					+standings-match('Бельгия', 'be.svg', '1', 1, 'Италия', 'it.svg', '2', 3, 2)
-					+standings-match('Швейцария', 'ch.svg', '2', 6, 'Испания', 'es.svg', '4', 8, 2)
-					+standings-match('Украина', 'ua.svg', '0', 10, 'Англия', 'eng.svg', '4', 11, 2)
-					+standings-match('Чехия', 'cz.svg', '1', 14, 'Дания', 'dk.svg', '2', 16, 2)
+					.standings-matchs
+						.standings-matchs__section
+							+standings-match('Бельгия', 'be.svg', '1', 1, 'Италия', 'it.svg', '2', 3, 2)
+							+standings-match('Швейцария', 'ch.svg', '2', 6, 'Испания', 'es.svg', '4', 8, 2)
+						.standings-matchs__section
+							+standings-match('Украина', 'ua.svg', '0', 10, 'Англия', 'eng.svg', '4', 11, 2)
+							+standings-match('Чехия', 'cz.svg', '1', 14, 'Дания', 'dk.svg', '2', 16, 2)
 			.__column
 				b.__column-header 1/2
 				.__column-content
-					+standings-match('Италия', 'it.svg', '5', 3, 'Испания', 'es.svg', '3', 8, 1)
-					+standings-match('Англия', 'eng.svg', '2', 11, 'Дания', 'dk.svg', '1', 16, 1)
+					.standings-matchs
+						.standings-matchs__section
+							+standings-match('Италия', 'it.svg', '5', 3, 'Испания', 'es.svg', '3', 8, 1)
+							+standings-match('Англия', 'eng.svg', '2', 11, 'Дания', 'dk.svg', '1', 16, 1)
 			.__column
 				b.__column-header Финал
 				.__column-content
-					+standings-match('Италия', 'it.svg', '4', 3, 'Англия', 'eng.svg', '3', 11, 1)
+					.standings-matchs
+						.standings-matchs__section
+							+standings-match('Италия', 'it.svg', '4', 3, 'Англия', 'eng.svg', '3', 11, 1)
