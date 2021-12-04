@@ -88,6 +88,7 @@
 			height: 18px;
 			background-color: $white;
 			mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
+			-webkit-mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
 			position: absolute;
 			left: 50%;
 			top: 50%;
