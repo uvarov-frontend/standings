@@ -205,9 +205,7 @@ const standings = {
 		this.hoverTeam();
 		this.testResizeWidth();
 
-		window.addEventListener('load', () => {
-			this.setHeight();
-		});
+		setTimeout(() => this.setHeight(), 500);
 	},
 };
 
