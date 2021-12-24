@@ -13,7 +13,15 @@ module.exports = {
 	},
 	plugins: [
 		'vue',
+		'import',
 	],
+	settings: {
+		'import/resolver': {
+			webpack: {
+				config: './config/webpack.common.js',
+			},
+		},
+	},
 	rules: {
 		'max-len': ['error', { code: 180 }],
 		'class-methods-use-this': 'off',

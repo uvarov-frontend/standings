@@ -9,7 +9,7 @@
     "html",
     "bem",
     "scss",
-		"js",
+    "js",
     "pug-bem"
   ],
   "repository": {
@@ -54,6 +54,7 @@
     "cssnano": "^5.0.8",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-vue": "^7.20.0",
     "ftp-deploy": "^2.4.1",

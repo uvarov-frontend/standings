@@ -1,4 +1,4 @@
-import standings from '../modules/standings';
+import standings from '@/js/modules/standings';
 
 document.addEventListener('DOMContentLoaded', () => {
 	standings.init();

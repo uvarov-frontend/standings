@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
+/* eslint no-console: 0 */
 
 const fs = require('fs');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -9,27 +10,34 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const PATHS = require('./paths');
+const ALIAS = require('./alias');
 
 const RULES = [];
-fs.readdirSync(PATHS.rules.pages).filter((filename) => RULES.push(require(`${PATHS.rules.pages}/${filename}`)));
+fs.readdirSync(PATHS.rules).filter((filename) => RULES.push(require(`${PATHS.rules}/${filename}`)));
 
-const PAGES_ENTRY = {};
-PAGES_ENTRY.main = `${PATHS.src}/${PATHS.rules.global}`;
+const PAGES_ENTRY = {
+	main: `${PATHS.src}/${PATHS.entry.global}`,
+};
 
+const PAGE_EXT = (filename) => filename.endsWith('.pug') || filename.endsWith('.twig') || filename.endsWith('.html');
 const PAGES_DIR = `${PATHS.src}/${PATHS.assets.templates}/${PATHS.assets.pages}`;
+const DEVELOP_PAGES = fs.readdirSync(PAGES_DIR).filter((filename) => filename.startsWith('_'));
+const PAGES = DEVELOP_PAGES.length > 0 ? DEVELOP_PAGES : fs.readdirSync(PAGES_DIR).filter(PAGE_EXT);
 
-const PAGES = fs.readdirSync(PAGES_DIR).filter((filename) => {
-	if (filename.endsWith('.pug') || filename.endsWith('.twig') || filename.endsWith('.html')) {
-		const PAGE_EXT = `.${filename.split('.').pop()}`;
-		filename = filename.replace(PAGE_EXT, '').replace('.html', '');
+PAGES.forEach((page) => {
+	const PAGE_NAME = page.replace(/^_/g, '').replace(/\.(pug|html|twig)/g, '');
+	const PAGES_ENTRY_FILES = fs.readdirSync(`${PATHS.src}/${PATHS.assets.pages}`);
 
-		PAGES_ENTRY[filename.replace(PAGE_EXT, '')] = {
-			dependOn: PATHS.rules.global.replace('.js', ''),
-			import: `${PATHS.src}/${PATHS.assets.pages}/${filename.replace(PAGE_EXT, '')}.js`,
+	if (PAGES_ENTRY_FILES.includes(`${PAGE_NAME}.js`)) {
+		PAGES_ENTRY[PAGE_NAME] = {
+			dependOn: PATHS.entry.global.replace(/\.(js)/g, ''),
+			import: `${PATHS.src}/${PATHS.assets.pages}/${PAGE_NAME}.js`,
 		};
-		return filename;
+	} else {
+		console.error('\x1b[31m', `ERROR! No entry page for ${page}`, '\x1b[0m');
+		delete PAGES_ENTRY.main;
+		PAGES.length = 0;
 	}
-	return false;
 });
 
 module.exports = {
@@ -44,9 +52,7 @@ module.exports = {
 		publicPath: '/',
 	},
 	resolve: {
-		alias: {
-			'@': PATHS.src,
-		},
+		alias: ALIAS,
 	},
 	optimization: {
 		splitChunks: {
@@ -74,7 +80,7 @@ module.exports = {
 		}),
 		...PAGES.map(
 			(page) => {
-				const PAGE_NAME = page.replace('.pug', '').replace('.twig', '').replace('.html', '');
+				const PAGE_NAME = page.replace(/^_/g, '').replace(/\.(pug|html|twig)/g, '');
 				return new HtmlWebpackPlugin({
 					template: `${PAGES_DIR}/${page}`,
 					filename: `./${PAGE_NAME}.html`,

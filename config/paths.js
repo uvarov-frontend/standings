@@ -3,9 +3,9 @@ const path = require('path');
 module.exports = {
 	src: path.join(__dirname, '../src'),
 	output: path.join(__dirname, '../build'),
-	rules: {
+	rules: path.join(__dirname, './rules'),
+	entry: {
 		global: 'main.js',
-		pages: path.join(__dirname, './rules'),
 	},
 	assets: {
 		pages: 'pages',

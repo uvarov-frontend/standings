@@ -1,4 +1,5 @@
 const PATHS = require('../paths');
+const ALIAS = require('../alias');
 
 module.exports = {
 	test: /\.js$/,
@@ -13,6 +14,11 @@ module.exports = {
 		},
 		{
 			loader: 'glob-import-loader',
+			options: {
+				resolve: {
+					alias: ALIAS,
+				},
+			},
 		},
 	],
 };
