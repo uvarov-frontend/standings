@@ -168,6 +168,7 @@ const standings = {
 
 	getWidth() {
 		this.minWidthColumn = this.columns[1]?.offsetLeft;
+		// eslint-disable-next-line no-unsafe-optional-chaining
 		this.maxWidthColumn = this.columns[2]?.offsetLeft - this.columns[1]?.offsetLeft || this.columns[1]?.offsetWidth;
 
 		this.currentWidth = document.body.clientWidth;

@@ -66,6 +66,7 @@
 		backdrop-filter: blur(4px);
 
 		&:hover {
+
 			&::before {
 				background-color: $green-hover;
 			}
@@ -88,7 +89,6 @@
 			height: 18px;
 			background-color: $white;
 			mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
-			-webkit-mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
 			position: absolute;
 			left: 50%;
 			top: 50%;
@@ -148,7 +148,7 @@
 		border-radius: 8px;
 		background-color: $grey-light-two;
 		display: flex;
-    flex-direction: column;
+		flex-direction: column;
 
 		@include mq('phone') {
 			width: 280px;
@@ -163,12 +163,19 @@
 				&__btn {
 					display: none;
 				}
+
+				&__time {
+					padding-left: 0;
+				}
 			}
 		}
 
 		&:last-child {
-			& .standings-matchs{
+
+			& .standings-matchs {
+
 				&__section {
+
 					&::before {
 						content: none;
 					}
@@ -176,7 +183,9 @@
 			}
 
 			& .standings-match {
+
 				&__team {
+
 					&::after {
 						width: 100%;
 					}
@@ -185,8 +194,10 @@
 		}
 
 		&_before {
+
 			& .standings-match {
 				@include mq('phone') {
+
 					& .standings-match__btn_next {
 						display: none;
 					}
@@ -198,8 +209,10 @@
 			}
 
 			&:first-child {
+
 				& .standings-match {
 					@include mq('phone') {
+
 						& .standings-match__btn_prev {
 							display: none;
 						}

@@ -23,12 +23,13 @@
 			background-color: $light-background;
 			display: block;
 			position: absolute;
-			top: 50%;
+			top: calc(50% + 9px);
 			transform: translateY(-50%);
 			right: -22px;
 		}
 
 		@include mq('phone') {
+
 			&::before {
 				right: -15px;
 			}
@@ -38,6 +39,7 @@
 
 .standings-match {
 	position: relative;
+	padding-top: 18px;
 
 	@include mq('phone') {
 		padding-left: 20px;
@@ -51,7 +53,7 @@
 		display: block;
 		position: absolute;
 		top: 50%;
-		margin-top: -1px;
+		margin-top: 8px;
 		left: -21px;
 
 		@include mq('phone') {
@@ -82,10 +84,10 @@
 			height: 100%;
 			background-color: $white;
 			mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
-			-webkit-mask: url('@/img/left-menu-arrow.svg') no-repeat 50% 50%;
 		}
 
 		&_prev {
+
 			&::before {
 				transform: translateY(-50%) translateX(-50%) scale(0.5) rotateZ(180deg);
 			}
@@ -101,6 +103,20 @@
 	&__content {
 		background-color: $white;
 		border-radius: 6px;
+	}
+
+	&__time {
+		position: absolute;
+		top: 0;
+		left: 0;
+		font-size: 12px;
+		line-height: 18px;
+		font-weight: 400;
+		color: $grey-two;
+
+		@include mq('phone') {
+			padding-left: 20px;
+		}
 	}
 
 	&__team {
@@ -155,6 +171,7 @@
 			}
 
 			&.standings-match__team_win {
+
 				&::before {
 					border-top-left-radius: 6px;
 				}
@@ -176,6 +193,7 @@
 			}
 
 			&.standings-match__team_win {
+
 				&::before {
 					border-bottom-left-radius: 6px;
 				}
@@ -207,12 +225,15 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			word-break: break-all;
+
+			/* stylelint-disable-next-line declaration-block-no-duplicate-properties */
 			display: -webkit-box;
 			-webkit-line-clamp: 1;
 			-webkit-box-orient: vertical;
 		}
 
 		&-count {
+			position: relative;
 			width: 20px;
 			text-align: center;
 			display: block;
@@ -220,6 +241,17 @@
 			line-height: 20px;
 			font-weight: inherit;
 			color: $black;
+
+			&-add {
+				position: relative;
+				right: -1px;
+				top: -1px;
+				display: inline-block;
+				vertical-align: super;
+				font-size: 9px;
+				line-height: 9px;
+				color: $grey-two;
+			}
 		}
 	}
 }

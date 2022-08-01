@@ -1,7 +1,8 @@
-mixin standings-match(teamOne, logoOne, countOne, IDOne, teamTwo, logoTwo, countTwo, IDTwo, winner)
+mixin standings-match(timeID, time, teamOne, logoOne, countOne, IDOne, teamTwo, logoTwo, countTwo, IDTwo, winner, countAddOne, countAddTwo)
 	.b-standings-match
 		button(type="button" data-standings-arrow="prev").__btn._prev
 		button(type="button" data-standings-arrow="next").__btn._next
+		time(datetime=timeID).__time= time
 		.__content
 			if winner == 1
 				-var winOne = 'standings-match__team_win';
@@ -12,14 +13,13 @@ mixin standings-match(teamOne, logoOne, countOne, IDOne, teamTwo, logoTwo, count
 			else
 				-var winOne = '';
 				-var winTwo = '';
-
 			.__team(class=winOne data-standings-team=IDOne)
 				span(style=`background-image:  url('~@/img/flag/${logoOne}')`).__team-logo
 				span(title=teamOne).__team-name= teamOne
 				.__team-count= countOne
-
-
+					span.__team-count-add= countAddOne
 			.__team(class=winTwo data-standings-team=IDTwo)
 				span(style=`background-image: url('~@/img/flag/${logoTwo}')`).__team-logo
 				span(title=teamTwo).__team-name= teamTwo
 				.__team-count= countTwo
+					span.__team-count-add= countAddTwo
