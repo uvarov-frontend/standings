@@ -1,7 +1,7 @@
-# Турнирная таблица
+# Standings
 
-Адаптивная турнирная таблица на ванильном JS.
-Демо: https://standings.frontend.uvarov.tech/
+Adaptive standings on vanilla js.
+Demo: https://standings.uvarov.tech/
 
 ## License
 
